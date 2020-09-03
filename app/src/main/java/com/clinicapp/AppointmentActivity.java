@@ -63,10 +63,10 @@ public class AppointmentActivity extends CommonActivity {
         df2 = new SimpleDateFormat("HH:mm aa", ConstValue.LOCALE);
         currentdate = c_year + "-" + (c_month + 1) + "-" + c_day;
         //df.format(calender.getTime());
+        //test
 
         buttonChooseDate = (Button) findViewById(R.id.buttonChooseDate);
         buttonChooseDate.setText(currentdate);
-
         buttonChooseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
