@@ -41,6 +41,8 @@ public class HealthTipsActivity extends CommonActivity {
     public boolean is_first_time;
     public int number_of_item;
 
+
+
     ListView listView;
 
     private DrawerLayout mDrawerLayout;
@@ -284,11 +286,9 @@ public class HealthTipsActivity extends CommonActivity {
             ImageView imageView = (ImageView) view.findViewById(R.id.imageview);
             TextView tipTitle = (TextView) view.findViewById(R.id.txtTitle);
             TextView tipDate = (TextView) view.findViewById(R.id.txtDate);
-
             Picasso.with(HealthTipsActivity.this).load(ConstValue.BASE_URL + "/uploads/tips/" + tips.get("tips_photo")).into(imageView);
             tipTitle.setText(tips.get("tips_title"));
             tipDate.setText(tips.get("on_date"));
-
             return view;
         }
     }

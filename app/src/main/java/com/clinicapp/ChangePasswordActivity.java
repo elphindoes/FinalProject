@@ -4,9 +4,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.CompoundButton;
+
+import androidx.appcompat.widget.AppCompatCheckBox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +24,7 @@ import util.NameValuePair;
 
 public class ChangePasswordActivity extends CommonActivity {
     EditText txtNewPass, txtCPass, txtRPass;
+    CheckBox checkbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +33,29 @@ public class ChangePasswordActivity extends CommonActivity {
         setHeaderLogo();
         allowBack();
 
+
         txtNewPass = (EditText) findViewById(R.id.txtNewPassword);
         txtCPass = (EditText) findViewById(R.id.txtCurrentPassword);
         txtRPass = (EditText) findViewById(R.id.txtRePassword);
+        checkbox = (CheckBox) findViewById(R.id.checkbox);
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    // show password
+                    txtCPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    txtNewPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    txtRPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    // hide password
+                    txtCPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    txtNewPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    txtRPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
 
+
+            }
+        });
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +64,7 @@ public class ChangePasswordActivity extends CommonActivity {
             }
         });
 
+
     }
 
     public void register() {
@@ -45,6 +72,7 @@ public class ChangePasswordActivity extends CommonActivity {
         String newPassword = txtNewPass.getText().toString();
         String currentPassword = txtCPass.getText().toString();
         String rePassword = txtRPass.getText().toString();
+
 
         boolean cancel = false;
         View focusView = null;
@@ -90,6 +118,14 @@ public class ChangePasswordActivity extends CommonActivity {
             commonTask.execute();
         }
 
-    }
 
+    }
 }
+
+
+
+
+
+
+
+

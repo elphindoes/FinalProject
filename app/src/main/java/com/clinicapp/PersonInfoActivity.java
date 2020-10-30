@@ -139,7 +139,7 @@ public class PersonInfoActivity extends CommonActivity {
                     public void VResponce(ArrayList<HashMap<String, String>> hashMaps) {
                         if (hashMaps != null) {
                             HashMap<String, String> appointmentData = hashMaps.get(0);
-                            String messageType = getResources().getString(R.string.your_appointment_is_booked_successfully_appointment_id) + " " + appointmentData.get("id") + " " + getResources().getString(R.string.visit_my_appointment_for_more_details);
+                            String messageType = "Your appointment is booked successfully";
                             common.setToastMessage(messageType);
                             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", ConstValue.LOCALE);
                             SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm:ss", ConstValue.LOCALE);
